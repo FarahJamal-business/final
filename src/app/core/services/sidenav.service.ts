@@ -10,9 +10,8 @@ export class SidenavService {
 
   getNavMenu(): NavMenuDto {
     return new NavMenuDto('NavMenu', [
-      new NavItemDto('Startups', 'domain', 'admin', '/startup'),
+      new NavItemDto('Startups', 'domain', 'admin', '/startup/all-startup'),
       new NavItemDto('Sectors', 'dashboard', 'admin', '/sectors'),
-      new NavItemDto('Users', 'user', 'admin', '/users'),
 
       new NavItemDto(
         'Sectors',
