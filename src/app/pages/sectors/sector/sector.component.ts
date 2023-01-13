@@ -108,17 +108,17 @@ export class SectorComponent implements OnInit {
       confirmButtonText: 'Approve'
     }).then(result => {
       if (result.isConfirmed) {
+        this._sectorsService.create({
+          name: row.name,
+          logo: row.logo,
+          color: row.color,
+          categoryName: row.categoryName
+        });
         this._sectorsService.deleteRequsted(row.key).then(() => {
           Swal.fire({
             title: 'approved',
             text: 'Successfully approved the request',
             icon: 'success'
-          });
-          this._sectorsService.create({
-            name: row.name,
-            logo: row.logo,
-            color: row.color,
-            categoryName: row.categoryName
           });
         });
       } else {

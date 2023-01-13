@@ -81,21 +81,22 @@ export class StartupComponent implements OnInit, OnDestroy {
       confirmButtonText: 'Approve'
     }).then(result => {
       if (result.isConfirmed) {
+        this._startupsService.create({
+          name: row.name,
+          logo: row?.logo,
+          emailAddress: row.emailAddress,
+          websiteUrl: row.websiteUrl,
+          sectors: row.sectors,
+          city: row.city,
+          numberOfEmployees: row.numberOfEmployees,
+          yearOfEstablish: row.yearOfEstablish,
+          description: row.description
+        });
         this._startupsService.deleteRequsted(row.key).then(() => {
           Swal.fire({
             title: 'approved',
             text: 'Successfully approved the request',
             icon: 'success'
-          });
-          this._startupsService.create({
-            name: row.name,
-            logo: row?.logo,
-            emailAddress: row.emailAddress,
-            websiteUrl: row.websiteUrl,
-            sectors: row.sectors,
-            city: row.city,
-            numberOfEmployees: row.numberOfEmployees,
-            yearOfEstablish: row.yearOfEstablish
           });
         });
       } else {
